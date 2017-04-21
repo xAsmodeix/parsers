@@ -8,6 +8,7 @@ from src.db import connect
 
 search_tags = 'Python Django'
 url = 'https://hh.ru/'
+table_name = 'vacancies'
 vacancy_fields = ['job_type', 'company_name',
                   'pub_date', 'vacancy_description',
                   'work_hours', 'address', 'key_skills',
@@ -90,7 +91,7 @@ def unpack_data(parsed_data, fields):
 def put_in_db(data):
     print('Putting to db proccess')
     meta, connection = connect()
-    connection.execute(meta.tables['vacancies'].insert(), data)
+    connection.execute(meta.tables[table_name].insert(), data)
 
 
 def interrupt():
